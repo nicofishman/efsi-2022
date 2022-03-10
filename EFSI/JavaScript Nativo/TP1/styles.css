@@ -1,0 +1,24 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    margin-top: 2%;
+}
+
+.boton {
+    margin-right: 5%;
+}
+
+.botones {
+    display: flex;
+    margin-top: 2%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

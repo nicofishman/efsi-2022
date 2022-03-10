@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP1 EFSI</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <form id="formulario">
+            <div class="item" id="matematica">
+                <label for="matematica">Matemática</label>
+                <input type="text" name="matematica" />
+            </div>
+            <div class="item" id="lengua">
+                <label for="lengua">Lengua</label>
+                <input type="text" name="lengua" />
+            </div>
+            <div class="item" id="efsi">
+                <label for="efsi">EFSI</label>
+                <input type="text" name="efsi" />
+            </div>
+            <div id="promedio">
+            </div>
+        </form>
+
+        <div class="botones">
+            <div class="boton">
+                <button onclick="calcularPromedio()">Calcular Promedio</button>
+            </div>
+            <div class="boton">
+                <button onclick="mayorNota()">Mayor Nota</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/funciones.js"></script>
+</body>
+
+</html>
