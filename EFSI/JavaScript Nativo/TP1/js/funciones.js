@@ -1,31 +1,37 @@
-function validarCampos() {
-    //validar que todos los campos estén llenos
-    var campos = document.querySelectorAll("input");
-    alerta = false;
-    campos.forEach(function (campo) {
-        if (isNaN(parseInt(campo.value))) alerta = true;
-        if (campo.value == "" || campo.value <= 0 || campo.value > 10) {
-            alerta = true;
-        }
-        if (alerta) alert(`Complete correctamente el campo ${campo.name}`)
-    });
-    return !alerta;
+function validarCampo(campo) {
+    if (campo.value == "") {
+        campo.classList.remove("invalid");
+        campo.classList.remove("valid");
+        return false;
+    }
+    if (campo.value > 10 || campo.value < 1) {
+        campo.classList.remove("valid");
+        campo.classList.add("invalid");
+        return false;
+    } else {
+        campo.classList.remove("invalid");
+        campo.classList.add("valid");
+        return true;
+    }
+
 }
 
-function validarInput(input) {
-    console.log(input.name);
-    var item = document.querySelector(`#${input.name}`);
-    if (input.value > 0 && input.value <= 10) {
-        item.style.backgroundColor = "green";
-    } else if (input.value == "") {
-        item.style.backgroundColor = "white";
-    } else {
-        item.style.backgroundColor = "red";
+function validarNotas() {
+    if (!validarCampo(matematicaInput)) {
+        alert("Ingrese una nota valida en matematicas");
+        return false;
+    } else if (!validarCampo(lenguaInput)) {
+        alert("Ingrese una nota valida en lengua");
+        return false;
+    } else if (!validarCampo(efsiInput)) {
+        alert("Ingrese una nota valida en efsi");
+        return false;
     }
+    return true;
 }
 
 function calcularPromedio() {
-    if (!validarCampos()) return;
+    if (!validarNotas()) return;
     var promedio = document.querySelector('#promedio');
     var inputs = document.querySelectorAll('input');
     var suma = 0;
@@ -34,26 +40,43 @@ function calcularPromedio() {
         console.log(suma)
     });
     var resultado = suma / inputs.length
-    promedio.innerHTML = `Resultado: <br> ${resultado.toFixed(2)}`;
-    promedio.style.backgroundColor = resultado >= 6 ? "green" : "red";
+    promedio.innerHTML = `${resultado.toFixed(2)}`;
+    promedio.style.fontWeight = "bold";
+    promedio.style.color = resultado >= 6 ? "green" : "red";
+    if (resultado >= 6) {
+        document.querySelector('#gif').src = './img/masdeseis.gif'
+    } else {
+        document.querySelector('#gif').src = './img/menosdeseis.gif'
+    }
+}
+
+function calcularMayorNota() {
+    if (!validarNotas()) return false;
+    const notas = document.querySelectorAll('input');
+    const materias = ["Matemática", "Lengua", "EFSI"];
+    let notaMayor = 0;
+    let notasArray = [];
+
+    notas.forEach(function (nota) {
+        if (parseInt(nota.value) > notaMayor) {
+            notaMayor = nota.value;
+        }
+    });
+    notas.forEach(function (nota, idx) {
+        if (nota.value == notaMayor) {
+            notasArray.push(materias[idx]);
+        }
+    });
+    console.log(notasArray);
+    return notasArray;
 }
 
 function mayorNota() {
-    if (!validarCampos()) return;
-    var inputs = document.querySelectorAll('input');
-    var mayorNota = 0;
-    var mayorMateria = [""];
-    inputs.forEach(function (input, idx) {
-        if (input.value > mayorNota) {
-            mayorNota = input.value;
-            mayorMateria = [input.name];
-        } else if (input.value == mayorNota) {
-            mayorMateria.push(input.name);
-        } else {
-            return;
-        }
-    });
-    alert(`La nota mayor es: ${mayor}`);
+    mayoresNotas = calcularMayorNota();
+    if (!mayoresNotas) return;
+    mayorNotaDiv = document.querySelector('#notas');
+    console.log(mayorNotaDiv);
+    mayorNotaDiv.innerHTML = `<ul>${mayoresNotas.map(nota => `<li class="notaAzul">${nota}</li>`).join('')}</ul>`;
 }
 
 var lenguaInput = document.querySelector("input[name=lengua]");
@@ -61,11 +84,11 @@ var efsiInput = document.querySelector("input[name=efsi]");
 var matematicaInput = document.querySelector("input[name=matematica]");
 
 lenguaInput.addEventListener("input", function () {
-    validarInput(lenguaInput);
+    validarCampo(lenguaInput);
 });
 matematicaInput.addEventListener("input", function () {
-    validarInput(matematicaInput);
+    validarCampo(matematicaInput);
 });
 efsiInput.addEventListener("input", function () {
-    validarInput(efsiInput);
+    validarCampo(efsiInput);
 });

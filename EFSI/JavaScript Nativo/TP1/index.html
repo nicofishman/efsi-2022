@@ -11,22 +11,30 @@
 
 <body>
     <div class="container">
+        <h1>EFSI - TP1</h1>
         <form id="formulario">
             <div class="item" id="matematica">
-                <label for="matematica">Matemática</label>
-                <input type="text" name="matematica" />
+                <input type="number" name="matematica" placeholder="Nota de matemática" />
             </div>
             <div class="item" id="lengua">
-                <label for="lengua">Lengua</label>
-                <input type="text" name="lengua" />
+                <input type="number" name="lengua"
+                placeholder="Nota de lengua" />
             </div>
             <div class="item" id="efsi">
-                <label for="efsi">EFSI</label>
-                <input type="text" name="efsi" />
-            </div>
-            <div id="promedio">
+                <input type="number" name="efsi"
+                placeholder="Nota de EFSI" />
             </div>
         </form>
+        <div id="promedioDiv">
+            El promedio es: <span id="promedio"></span>
+        </div>
+        <div id="mayorNota">
+            Materias con mayores notas:
+            <div id="notas"></div>
+        </div>
+        <div id="image">
+            <img src="img/benvenu.gif" alt="imagen" id="gif" />
+        </div>
 
         <div class="botones">
             <div class="boton">

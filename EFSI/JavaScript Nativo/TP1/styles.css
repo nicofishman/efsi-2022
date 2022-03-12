@@ -1,24 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+html {
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	background-color: #e8eae1;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	background-color: #e2e4da;
+	width: 30%;
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+form {
+	width: 60%;
+}
+
+#image {
+	display: flex;
+	justify-content: center;
+}
+
+#image img {
+	width: 80%;
+}
+
+input {
+	background-color: #d5d8cd;
+	border-radius: 2rem;
+	border: 2px solid rgb(153, 151, 151);
+	padding: 0.5rem;
+	margin: 0.5rem;
+	width: 100%;
+	font-size: 1rem;
+	text-align: center;
+	appearance: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
 }
 
 .item {
-    margin-top: 2%;
+	margin-top: 2%;
 }
 
 .boton {
-    margin-right: 5%;
+	margin-right: 5%;
 }
 
 .botones {
-    display: flex;
-    margin-top: 2%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	margin-top: 2%;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+input {
+	outline: none;
+}
+
+.valid {
+	border: 2px green solid;
+}
+.invalid {
+	border: 2px red solid;
+}
+
+.notaAzul {
+	color: blue;
+	text-align: center;
+	margin-top: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+button {
+	/*make me a nice button*/
+	background-color: #4caf50;
+	border-radius: 2rem;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
 }
