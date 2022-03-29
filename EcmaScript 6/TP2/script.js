@@ -3,14 +3,11 @@ let tareas = [];
 function refrescarTareas() {
     let lista = document.querySelector("#tareas");
     lista.innerHTML = "";
-    tareas.forEach((tarea, idx) => {
-        //agregar tareas a la lista
-        let item = document.createElement(```<div class="tarea" id=${idx}>
-        <input type="checkbox" onclick="completarTarea(${idx})">
+    tareas.forEach((tarea) => {
+        lista.innerHTML += `<div class="tarea" id=${tarea.id}>
+        <input type="checkbox" onclick="completarTarea(${tarea.id})">
         <p class="textoTarea">${tarea.titulo}</p>
-    </div>
-    ```);
-        lista.appendChild(item);
+        </div>`
     });
 }
 
@@ -21,4 +18,8 @@ function agregarTarea(){
     tareas.push(tarea);
     console.log(tareas);
     refrescarTareas();
+}
+
+function completarTarea(id){
+
 }
