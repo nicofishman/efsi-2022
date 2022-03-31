@@ -8,6 +8,6 @@ class Tarea {
     }
     marcar(){
         this.completed = true;
-        this.completedTime = new Date();
+        this.spentTime = new Date().getTime() - this.creationTime.getTime();
     }
 }
