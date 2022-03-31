@@ -105,6 +105,15 @@ body {
   margin-top: 0;
 }
 
+.icono {
+  color: white;
+  font-size: 1.5em;
+  background-color: rgb(167, 6, 6);
+  padding: 0.5em;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
 .tarea {
   background-color: #c5e1e6;
   height: 50px;
@@ -139,8 +148,11 @@ body {
 }
 
 .completada {
-  text-decoration: line-through;
   background-color: var(--completada);
+}
+
+.completada p {
+  text-decoration: line-through;
 }
 
 .completada input {

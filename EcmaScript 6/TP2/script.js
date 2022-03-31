@@ -16,6 +16,7 @@ function refrescarTareas() {
         lista.innerHTML += `<div class=\"${clases}\" id=${tarea.id}>
         <input type="checkbox" ${tarea.completed && "checked disabled"} onclick="completarTarea(${tarea.id})">
         <p class="textoTarea">${tarea.titulo}</p>
+        <i class="fa fa-trash icono" aria-hidden="true" onclick="eliminarTarea(${tarea.id})"></i>
         </div>`
     });
 }
@@ -60,4 +61,9 @@ function mostrarMasRapida(){
     <div class="tarea mas-rapida" id=${tareaMasRapida.id}>
     <p class="textoTarea">${tareaMasRapida.titulo}</p>
     </div>`
+}
+
+function eliminarTarea(id){
+    tareas = tareas.filter((tarea) => tarea.id !== id);
+    refrescarTareas();
 }
