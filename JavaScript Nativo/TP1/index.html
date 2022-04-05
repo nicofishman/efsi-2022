@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP1 EFSI</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>EFSI - TP1</h1>
+        <form id="formulario">
+            <div class="item" id="matematica">
+                <input type="number" name="matematica" placeholder="Nota de matemática" />
+            </div>
+            <div class="item" id="lengua">
+                <input type="number" name="lengua"
+                placeholder="Nota de lengua" />
+            </div>
+            <div class="item" id="efsi">
+                <input type="number" name="efsi"
+                placeholder="Nota de EFSI" />
+            </div>
+        </form>
+        <div id="promedioDiv">
+            El promedio es: <span id="promedio"></span>
+        </div>
+        <div id="mayorNota">
+            Materias con mayores notas:
+            <div id="notas"></div>
+        </div>
+        <div id="image">
+            <img src="img/benvenu.gif" alt="imagen" id="gif" />
+        </div>
+
+        <div class="botones">
+            <div class="boton">
+                <button onclick="calcularPromedio()">Calcular Promedio</button>
+            </div>
+            <div class="boton">
+                <button onclick="mayorNota()">Mayor Nota</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/funciones.js"></script>
+</body>
+
+</html>
