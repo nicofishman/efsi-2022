@@ -55,7 +55,14 @@ function mostrarMasRapida(){
         tareaMasRapidaDiv.innerHTML = "No hay tareas completadas";
         return;
     }
-    const tareaMasRapida = tareas.reduce((a,b) => a.spentTime < b.spentTime ? a : b);
+    let tareaMasRapida;
+    tareas.forEach((tarea) => {
+        if(tarea.completed) {
+            if(!tareaMasRapida || tareaMasRapida.spentTime > tarea.spentTime){
+                tareaMasRapida = tarea;
+            }    
+        }
+    });
     tareaMasRapidaDiv.innerHTML = "";
     tareaMasRapidaDiv.innerHTML = `<h3>Tarea más rápida:</h3>
     <div class="tarea mas-rapida" id=${tareaMasRapida.id}>
