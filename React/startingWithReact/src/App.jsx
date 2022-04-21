@@ -1,41 +1,45 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
+import React from 'react'
 import './App.css'
+import Box from '@mui/material/Box'
+import Card from './Components/Card'
+import Input from '@mui/material/Input'
+import MySwitch from './Components/MySwitch/MySwitch'
+import { useCard } from './Context/CardContext'
 
 const App = () => {
-    const [count, setCount] = useState(0)
+    const { cartas, input, setInput } = useCard()
+    const handleChange = e => setInput(e.target.value)
+
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>Hello Vite + React!</p>
-                <p>
-                    <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-                    </button>
-                </p>
-                <p>Pere Trolo 20</p>
-                <p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-            Learn React
-                    </a>
-                    {' | '}
-                    <a
-                        className="App-link"
-                        href="https://vitejs.dev/guide/features.html"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-            Vite Docs
-                    </a>
-                </p>
-            </header>
-        </div>
+        <>
+            <Box sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                mt: 5
+            }}>
+                <MySwitch></MySwitch>
+                <Input value={input} onChange={handleChange}></Input>
+            </Box>
+            <Box
+                sx={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(6, 1fr)',
+                    gridGap: '1rem',
+                    justifyContent: 'center',
+                    mt: 5,
+                    justifyItems: 'center',
+                }}
+            >
+                {cartas.map((carta) => {
+                    return (
+                        <Card carta={carta} key={carta.id}/>
+                    )
+                })}
+            </Box>
+        </>
     )
 }
 
