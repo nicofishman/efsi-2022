@@ -40,7 +40,9 @@ export default function Card({ carta }) {
                     color: carta.color === 'White' ? 'black' : 'white',
                 }}
             >
+                {/* ╚═( ͡° ͜ʖ ͡°)═╝ */}
                 {carta.text}
+                {/* ╚═( ͡° ͜ʖ ͡°)═╝ */}
             </Typography>
             <Box
                 component='img'

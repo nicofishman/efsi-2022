@@ -26,7 +26,7 @@ const App = () => {
             <Box
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(6, 1fr)',
+                    gridTemplateColumns: 'repeat(5, 1fr)',
                     gridGap: '1rem',
                     justifyContent: 'center',
                     mt: 5,

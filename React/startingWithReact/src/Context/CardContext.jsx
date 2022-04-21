@@ -10,7 +10,11 @@ const CardProvider = ({ children }) => {
     const [input, setInput] = useState('')
 
     useEffect(() => {
-        setCartas((lang === 'es' ? cartasEspanol : cartasIngles).filter(carta => carta.text.toLowerCase().includes(input.toLowerCase())))
+        setCartas(
+            (lang === 'es' ? cartasEspanol : cartasIngles)
+                .filter(carta => carta.text.toLowerCase()
+                    .includes(input.toLowerCase()))
+        )
     }, [lang, input])
 
     const value = useMemo(() => ({
