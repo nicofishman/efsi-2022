@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import './App.css'
 import Box from '@mui/material/Box'
 import Card from './Components/Card'
@@ -11,7 +11,7 @@ const App = () => {
     const handleChange = e => setInput(e.target.value)
 
     return (
-        <>
+        <Fragment>
             <Box sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -39,7 +39,7 @@ const App = () => {
                     )
                 })}
             </Box>
-        </>
+        </Fragment>
     )
 }
 
