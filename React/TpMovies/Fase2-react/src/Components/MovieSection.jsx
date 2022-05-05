@@ -1,11 +1,28 @@
 import React from 'react'
+import MovieCarrousel from './MovieCarrousel'
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Filter from './Filter';
 
-const MovieSection = ({ title, movies }) => {
+const MovieSection = ({ title, movies, filters }) => {
     return (
         <>
-            <div className="sectionTitle">
-                {title}
-            </div>
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+            }}>
+                <Typography sx={{
+                    fontSize: '1.5rem',
+                    fontWeight: 'bold',
+                    my: 3,
+                    mx: 5,
+                    textAlign: 'start',
+                }}>
+                    {title}
+                </Typography>
+                <Filter filters={filters} />
+            </Box>
             <MovieCarrousel movies={movies}></MovieCarrousel>
         </>
     )
