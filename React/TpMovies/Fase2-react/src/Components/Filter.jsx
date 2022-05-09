@@ -10,7 +10,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
         height: 10,
         fontWeight: 'bold',
         padding: 15,
-        '&.Mui-selected': {
+        '&.Mui-selected, &.Mui-selected:hover': {
             backgroundColor: '#032541',
             color: '#3fd7ad'
         },
@@ -35,6 +35,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
 
 const Filter = ({ filters }) => {
     const [filterActive, setFilterActive] = useState(filters[0]);
+    console.log(filterActive);
     return (
         <StyledToggleButtonGroup
             exclusive
