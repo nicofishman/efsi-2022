@@ -16,6 +16,7 @@ const Movie = ({ movie }) => {
             <Box sx={{
                 width: 200,
                 height: 300,
+                mb: 4
             }}>
                 <Box
                     component='img'
@@ -25,7 +26,7 @@ const Movie = ({ movie }) => {
                         mb: 2,
                     }}
                 />
-                {/* <RatingWheel rating={vote_average} /> */}
+                <RatingWheel rating={vote_average} />
             </Box>
             <Box sx={{
                 display: 'flex',
