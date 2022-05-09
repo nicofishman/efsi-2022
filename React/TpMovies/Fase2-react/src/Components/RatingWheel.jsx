@@ -4,6 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Typography } from '@mui/material';
 
 const RatingWheel = ({ rating }) => {
+    const wheelColor = rating >= 7 ? 'success' : rating >= 4 ? 'warning' : 'error'
     return (
         <Box position='relative' sx={{
             top: '-12%',
@@ -22,11 +23,11 @@ const RatingWheel = ({ rating }) => {
                 <Typography sx={{
                     mt: 0.1,
                     fontSize: '0.8rem',
-                    color: '#3fd7ad',
+                    color: 'white',
                     fontWeight: 'bold',
                 }}>{rating}</Typography>
             </Box>
-            <CircularProgress variant='determinate' color='success' value={rating} sx={{
+            <CircularProgress variant='determinate' color={wheelColor} value={rating * 10} sx={{
                 padding: 0.4,
                 position: 'relative',
                 top: -40,

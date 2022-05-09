@@ -9,6 +9,14 @@ function makeTheme() {
         typography: {
             fontFamily: "lato, sans-serif"
         },
+        palette: {
+            success: {
+                main: '#3fd7ad'
+            },
+            warning: {
+                main: '#d2d531',
+            }
+        },
         components: {
             MuiCssBaseline: {
                 styleOverrides: {
