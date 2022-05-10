@@ -2,41 +2,61 @@ import React from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import RatingWheel from './RatingWheel';
+import { Link } from 'react-router-dom';
 
 const Movie = ({ movie }) => {
-    const { poster_path, vote_average } = movie
+    const { poster_path, vote_average, id } = movie
     const title = movie.title || movie.name
     const release_date = movie.release_date || movie.first_air_date
     return (
         <Box sx={{
             display: 'flex',
             flexDirection: 'column',
-            mx: 5
+            mx: 5,
+            my: 2,
+            width: 200,
         }}>
-            <Box sx={{
-                width: 200,
-                height: 300,
-                mb: 4
-            }}>
+            <Link to={`/movie/${id}`}>
                 <Box
-                    component='img'
-                    src={`https://image.tmdb.org/t/p/w200${poster_path}`}
                     sx={{
-                        borderRadius: '10px',
-                        mb: 2,
-                        objectFit: 'cover',
-                        width: '100%',
-                        height: '100%'
-                    }}
-                />
-                <RatingWheel rating={vote_average} />
-            </Box>
+                        width: 200,
+                        height: 300,
+                        mb: 4,
+                        transitionDuration: '0.3s',
+                        "&:hover": {
+                            cursor: 'pointer',
+                            transform: 'scale(1.05)',
+                        }
+                    }}>
+                    <Box
+                        component='img'
+                        src={`https://image.tmdb.org/t/p/w200${poster_path}`}
+                        sx={{
+                            borderRadius: '10px',
+                            mb: 2,
+                            objectFit: 'cover',
+                            width: '100%',
+                            height: '100%'
+                        }}
+                    />
+                    <RatingWheel rating={vote_average} />
+                </Box>
+            </Link>
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 textAlign: 'start',
+                overflow: 'hidden',
             }}>
-                <Typography fontWeight='bold'>{title}</Typography>
+                <Typography fontWeight='bold' sx={{
+                    whiteSpace: 'nowrap',
+                    transitionDuration: '3s',
+                    zIndex: 10,
+                    "&:hover": {
+                        transform: title.length > 30 && 'translateX(-80%)',
+                        overflow: title.length > 30 && 'visible',
+                    }
+                }}>{title}</Typography>
                 <Typography fontWeight={100}>{release_date}</Typography>
             </Box>
         </Box>

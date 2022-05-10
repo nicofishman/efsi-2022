@@ -1,7 +1,7 @@
 import React from 'react'
-import SearchMovieInput from './Components/SearchMovieInput.jsx'
-import MovieSection from './Components/MovieSection'
-import movies from '../movies_test.json'
+import SearchMovieInput from '../Components/SearchMovieInput.jsx'
+import MovieSection from '../Components/MovieSection'
+import movies from '../../movies_test.json'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
@@ -21,7 +21,8 @@ function App() {
             }}>Movie Search</Typography>
             <SearchMovieInput />
             <MovieSection title='Lo Más Buscado' movies={movies.most_searched.results} filters={mostSearchedFilters}></MovieSection>
-            <MovieSection title='Lo Mejor Rateado' movies={movies.top_rated.results} filters={topRatedFilters}></MovieSection>
+            <MovieSection title='Lo Mejorcito' movies={movies.top_rated.results} filters={topRatedFilters}></MovieSection>
+            <MovieSection title='Lo que se viene' movies={movies.upcoming.results} filters={[]}></MovieSection>
         </Box>
     )
 }

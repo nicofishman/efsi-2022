@@ -52,6 +52,7 @@ const Filter = ({ filters }) => {
                         key={filter}
                         value={filter}
                         aria-label={filter}
+                        onClick={() => setFilterActive(filter)}
                     >
                         {filter}
                     </ToggleButton>
