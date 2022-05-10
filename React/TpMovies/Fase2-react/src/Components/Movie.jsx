@@ -24,6 +24,9 @@ const Movie = ({ movie }) => {
                     sx={{
                         borderRadius: '10px',
                         mb: 2,
+                        objectFit: 'cover',
+                        width: '100%',
+                        height: '100%'
                     }}
                 />
                 <RatingWheel rating={vote_average} />
