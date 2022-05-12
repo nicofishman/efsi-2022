@@ -35,7 +35,6 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
 
 const Filter = ({ filters }) => {
     const [filterActive, setFilterActive] = useState(filters[0]);
-    console.log(filterActive);
     return (
         <StyledToggleButtonGroup
             exclusive
