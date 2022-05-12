@@ -28,8 +28,12 @@ function App() {
     }, [])
 
     return (
-        <Box className="App" sx={{
+        <Box sx={{
             overflowX: 'hidden',
+            //make "background-color: #FFDEE9; background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);" occupy all page
+            backgroundColor: '#FFDEE9',
+            backgroundImage: 'linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)',
+            textAlign: 'center',
         }}>
             <Typography sx={{
                 textAlign: 'center',

@@ -10,6 +10,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
         height: 10,
         fontWeight: 'bold',
         padding: 15,
+        backgroundColor: '#fff',
         '&.Mui-selected, &.Mui-selected:hover': {
             backgroundColor: '#032541',
             color: '#3fd7ad'

@@ -31,12 +31,12 @@ const MovieInfo = ({ movie }) => {
                     display: 'flex',
                     width: '5rem',
                 }}>
-                    <RatingWheel rating={movie.vote_average} />
                 </Box>
             </Box>
             <Typography sx={{
                 fontSize: '2rem',
                 fontWeight: 'bold',
+                mt: 3,
             }}>
                 Vista General
             </Typography>

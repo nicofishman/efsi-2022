@@ -31,6 +31,7 @@ const RatingWheel = ({ rating }) => {
                 padding: 0.4,
                 position: 'relative',
                 top: -40,
+                left: -80
             }} />
 
         </Box>

@@ -16,7 +16,9 @@ const Movie = ({ movie }) => {
             my: 2,
             width: 200,
         }}>
-            <Link to={`/movie/${id}`}>
+            <Link to={`/movie/${id}`} style={{
+                textDecoration: 'none',
+            }}>
                 <Box
                     sx={{
                         width: 200,
