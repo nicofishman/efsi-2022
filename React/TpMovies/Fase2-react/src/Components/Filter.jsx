@@ -35,8 +35,10 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
 
 
 const Filter = ({ filters }) => {
-    const [filterActive, setFilterActive] = useState(filters[0]);
+    console.log(filters);
+    const [filterActive, setFilterActive] = useState(filters[0].name);
     return (
+        filters &&
         <StyledToggleButtonGroup
             exclusive
             aria-label="movie filter"
@@ -49,12 +51,12 @@ const Filter = ({ filters }) => {
             {filters.map((filter) => {
                 return (
                     <ToggleButton
-                        key={filter}
-                        value={filter}
-                        aria-label={filter}
-                        onClick={() => setFilterActive(filter)}
+                        key={filter.name}
+                        value={filter.name}
+                        aria-label={filter.name}
+                        onClick={() => setFilterActive(filter.name)}
                     >
-                        {filter}
+                        {filter.name}
                     </ToggleButton>
                 )
             })}
