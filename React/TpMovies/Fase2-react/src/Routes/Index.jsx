@@ -4,7 +4,7 @@ import MovieSection from '../Components/MovieSection'
 import movies from '../../movies_test.json'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { movieById } from '../FetchFunctions'
+import { movieByType } from '../FetchFunctions'
 
 
 function App() {
@@ -21,17 +21,17 @@ function App() {
     useEffect(() => {
         const fetchMovies = async () => {
             
-            const mostSearched = await movieById(mostSearchedMoviesTyes.name, mostSearchedMoviesTyes.location, mostSearchedMoviesTyes.filters)
+            const mostSearched = await movieByType(mostSearchedMoviesTyes.type, mostSearchedMoviesTyes.location, mostSearchedMoviesTyes.filters)
 
-            const topRated = await movieById('top_rated')
-            const upcoming = await movieById('upcoming')
+            const topRated = await movieByType('top_rated')
+            const upcoming = await movieByType('upcoming')
             console.log(mostSearched.results)
             setMostSearchedMovies(mostSearched.results)
             setTopRatedMovies(topRated.results)
             setUpcomingMovies(upcoming.results)
         }
         fetchMovies()
-    }, [])
+    }, [mostSearchedMoviesTyes])
 
     return (
         <Box sx={{
@@ -48,7 +48,7 @@ function App() {
                 my: 2
             }}>Movie Search</Typography>
             <SearchMovieInput />
-            <MovieSection title='Lo Más Buscado' movies={mostSearchedMovies} filters={mostSearchedFilters}></MovieSection>
+            <MovieSection title='Lo Más Buscado' movies={mostSearchedMovies} filters={mostSearchedFilters} set={(obj) => setMostSearchedMoviesTyes(obj)}></MovieSection>
             <MovieSection title='Lo Mejorcito' movies={topRatedMovies} filters={topRatedFilters}></MovieSection>
             <MovieSection title='Lo que se viene' movies={upcomingMovies} filters={null}></MovieSection>
         </Box>

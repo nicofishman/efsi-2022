@@ -34,9 +34,15 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
 }));
 
 
-const Filter = ({ filters }) => {
+const Filter = ({ filters, func }) => {
     console.log(filters);
     const [filterActive, setFilterActive] = useState(filters[0].name);
+
+    const handleClick = (filter) => {
+        setFilterActive(filter.name),
+        func(filter)
+    }
+
     return (
         filters &&
         <StyledToggleButtonGroup
@@ -54,7 +60,7 @@ const Filter = ({ filters }) => {
                         key={filter.name}
                         value={filter.name}
                         aria-label={filter.name}
-                        onClick={() => setFilterActive(filter.name)}
+                        onClick={() => handleClick(filter)}
                     >
                         {filter.name}
                     </ToggleButton>

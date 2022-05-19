@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Filter from "./Filter";
 
-const MovieSection = ({ title, movies, filters }) => {
+const MovieSection = ({ title, movies, filters, set }) => {
     return (
         <>
         <Box
@@ -26,7 +26,7 @@ const MovieSection = ({ title, movies, filters }) => {
             {title}
             </Typography>
 
-            {filters && <Filter filters={filters} />}
+            {filters && <Filter func={set} filters={filters} />}
         </Box>
 
         <MovieCarrousel movies={movies}></MovieCarrousel>
