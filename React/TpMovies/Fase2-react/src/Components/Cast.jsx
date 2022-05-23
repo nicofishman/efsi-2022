@@ -9,7 +9,6 @@ const Cast = ({ id }) => {
         const fetchcast = async () => {
             const cast = await castById(id)
             setcast(cast.cast)
-            console.log(cast);
         }
         fetchcast();
     }, [])
@@ -21,7 +20,6 @@ const Cast = ({ id }) => {
             mx: '2rem',
         }}>
             {cast && cast.slice(0, 3).map((cast, index) => {
-                console.log(cast)
                 return (
                     <Box sx={{
                         display: 'flex',

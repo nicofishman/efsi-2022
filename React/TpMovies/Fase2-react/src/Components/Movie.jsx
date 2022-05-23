@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import RatingWheel from './RatingWheel';
 import { Link } from 'react-router-dom';
+import { MovieContext } from '../MovieContext';
 
 const Movie = ({ movie }) => {
+
+    const {mostSearchedMoviesTyes} = useContext(MovieContext)
+
     const { poster_path, vote_average, id } = movie
     const title = movie.title || movie.name
     const release_date = movie.release_date || movie.first_air_date
@@ -16,7 +20,7 @@ const Movie = ({ movie }) => {
             my: 2,
             width: 200,
         }}>
-            <Link to={`/movie/${id}`} style={{
+            <Link to={`/${mostSearchedMoviesTyes.url}/${id}`} style={{
                 textDecoration: 'none',
             }}>
                 <Box

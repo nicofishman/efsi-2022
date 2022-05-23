@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SearchMovieInput from '../Components/SearchMovieInput.jsx'
 import MovieSection from '../Components/MovieSection'
 import movies from '../../movies_test.json'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { movieByType } from '../FetchFunctions'
+import { MovieContext } from '../MovieContext.jsx'
+
+
+function App() {
+    const mostSearchedFilters = [{name: 'En Streaming', type: 'popular', location: 'movie', url: 'movie'}, {name: 'En Televisión', type: 'popular', location: 'tv', url: 'tv' },{name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'], url: 'movie' }, {name: 'En Cines', type: 'now_playing', location: 'movie', url: 'movie'}]
 
 
 function App() {
     const mostSearchedFilters = [{name: 'En Streaming', type: 'popular', location: 'movie'}, {name: 'En Televisión', type: 'popular', location: 'tv' },{name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'] }, {name: 'En Cines', type: 'now_playing', location: 'movie'}]
     const topRatedFilters = [{name: 'Hoy'}, {name: 'Esta Semana'}]
 
+    const {mostSearchedMoviesTyes, setMostSearchedMoviesTyes} = useContext(MovieContext)
 
-    const [mostSearchedMoviesTyes, setMostSearchedMoviesTyes] = useState({name: 'En Streaming', type: 'popular', location: 'movie', filters: []})
     const [mostSearchedMovies, setMostSearchedMovies] = useState([])
     const [topRatedMovies, setTopRatedMovies] = useState([])
     const [upcomingMovies, setUpcomingMovies] = useState([])
@@ -24,7 +29,6 @@ function App() {
 
             const topRated = await movieByType('top_rated')
             const upcoming = await movieByType('upcoming')
-            console.log(mostSearched.results)
             setMostSearchedMovies(mostSearched.results)
             setTopRatedMovies(topRated.results)
             setUpcomingMovies(upcoming.results)
