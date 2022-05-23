@@ -13,7 +13,6 @@ function App() {
 
 
     const [mostSearchedMoviesTyes, setMostSearchedMoviesTyes] = useState({name: 'En Streaming', type: 'popular', location: 'movie', filters: []})
-
     const [mostSearchedMovies, setMostSearchedMovies] = useState([])
     const [topRatedMovies, setTopRatedMovies] = useState([])
     const [upcomingMovies, setUpcomingMovies] = useState([])

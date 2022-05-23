@@ -25,7 +25,6 @@ const MovieSection = ({ title, movies, filters, set }) => {
             >
             {title}
             </Typography>
-
             {filters && <Filter func={set} filters={filters} />}
         </Box>
 
