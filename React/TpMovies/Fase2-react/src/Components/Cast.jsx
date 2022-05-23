@@ -2,12 +2,14 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import React, { useState, useEffect } from 'react'
 import { castById } from '../FetchFunctions'
+import { useParams } from 'react-router-dom';
 
 const Cast = ({ id }) => {
     const [cast, setcast] = useState(undefined)
+    const { url } = useParams()
     useEffect(() => {
         const fetchcast = async () => {
-            const cast = await castById(id)
+            const cast = await castById(id, url)
             setcast(cast.cast)
         }
         fetchcast();
@@ -21,10 +23,11 @@ const Cast = ({ id }) => {
         }}>
             {cast && cast.slice(0, 3).map((cast, index) => {
                 return (
-                    <Box sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                    }}
+                    <Box key={index}
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                        }}
                     >
                         <Typography sx={{
                             fontSize: '1.2rem',

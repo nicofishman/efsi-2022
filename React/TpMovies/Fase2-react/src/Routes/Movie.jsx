@@ -10,15 +10,13 @@ import { MovieContext } from '../MovieContext'
 
 const Movie = () => {
 
-    
+
     const { movieId, url } = useParams()
     const [movie, setMovie] = useState(undefined)
-    console.log(movieId, url);
     useEffect(() => {
         const fetchMovie = async () => {
-            const movie = await movieByType(movieId, url )
+            const movie = await movieByType(movieId, url)
             setMovie(movie)
-            console.log(movie);
         }
         fetchMovie();
     }, [])

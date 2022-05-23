@@ -9,14 +9,10 @@ import { MovieContext } from '../MovieContext.jsx'
 
 
 function App() {
-    const mostSearchedFilters = [{name: 'En Streaming', type: 'popular', location: 'movie', url: 'movie'}, {name: 'En Televisión', type: 'popular', location: 'tv', url: 'tv' },{name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'], url: 'movie' }, {name: 'En Cines', type: 'now_playing', location: 'movie', url: 'movie'}]
+    const mostSearchedFilters = [{ name: 'En Streaming', type: 'popular', location: 'movie', url: 'movie' }, { name: 'En Televisión', type: 'popular', location: 'tv', url: 'tv' }, { name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'], url: 'movie' }, { name: 'En Cines', type: 'now_playing', location: 'movie', url: 'movie' }]
+    const topRatedFilters = [{ name: 'Hoy' }, { name: 'Esta Semana' }]
 
-
-function App() {
-    const mostSearchedFilters = [{name: 'En Streaming', type: 'popular', location: 'movie'}, {name: 'En Televisión', type: 'popular', location: 'tv' },{name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'] }, {name: 'En Cines', type: 'now_playing', location: 'movie'}]
-    const topRatedFilters = [{name: 'Hoy'}, {name: 'Esta Semana'}]
-
-    const {mostSearchedMoviesTyes, setMostSearchedMoviesTyes} = useContext(MovieContext)
+    const { mostSearchedMoviesTyes, setMostSearchedMoviesTyes } = useContext(MovieContext)
 
     const [mostSearchedMovies, setMostSearchedMovies] = useState([])
     const [topRatedMovies, setTopRatedMovies] = useState([])
@@ -24,7 +20,7 @@ function App() {
 
     useEffect(() => {
         const fetchMovies = async () => {
-            
+
             const mostSearched = await movieByType(mostSearchedMoviesTyes.type, mostSearchedMoviesTyes.location, mostSearchedMoviesTyes.filters)
 
             const topRated = await movieByType('top_rated')
