@@ -1,18 +1,22 @@
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import { movieById } from '../FetchFunctions'
+import { movieById, movieByType } from '../FetchFunctions'
 import RatingWheel from './../Components/RatingWheel';
 import MovieInfo from './../Components/MovieInfo';
+import { MovieContext } from '../MovieContext'
 
 
 const Movie = () => {
-    const { movieId } = useParams()
+
+    
+    const { movieId, url } = useParams()
     const [movie, setMovie] = useState(undefined)
+    console.log(movieId, url);
     useEffect(() => {
         const fetchMovie = async () => {
-            const movie = await movieById(movieId)
+            const movie = await movieByType(movieId, url )
             setMovie(movie)
             console.log(movie);
         }
