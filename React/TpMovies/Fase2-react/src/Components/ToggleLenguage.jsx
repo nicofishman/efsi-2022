@@ -1,7 +1,7 @@
 import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import React, { useContext } from 'react'
 import { MovieContext } from '../MovieContext';
-
+import Flag from 'react-world-flags';
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
     '& .MuiToggleButtonGroup-grouped': {
@@ -35,6 +35,63 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
 const ToggleLenguage = () => {
 
     const { setLenguage, lenguage } = useContext(MovieContext)
+    const languageFilters = [
+        {
+            value: 'en',
+            label: 'English',
+            flag: 'us'
+        },
+        {
+            value: 'es',
+            label: 'Español',
+            flag: 'es'
+        },
+        {
+            value: 'pt',
+            label: 'Português',
+            flag: 'pt'
+        },
+        {
+            value: 'fr',
+            label: 'Français',
+            flag: 'fr'
+        },
+        {
+            value: 'it',
+            label: 'Italiano',
+            flag: 'it'
+        },
+        {
+            value: 'he',
+            label: 'עברית',
+            flag: 'il'
+        },
+        {
+            value: 'de',
+            label: 'Deutsch',
+            flag: 'de'
+        },
+        {
+            value: 'ru',
+            label: 'Русский',
+            flag: 'ru'
+        },
+        {
+            value: 'ja',
+            label: '日本語',
+            flag: 'jp'
+        },
+        {
+            value: 'ko',
+            label: '한국어',
+            flag: 'kr'
+        },
+        {
+            value: 'zh',
+            label: '中文',
+            flag: 'cn'
+        },
+    ]
 
     const handleClick = (leng) => {
         setLenguage(leng)
@@ -51,31 +108,16 @@ const ToggleLenguage = () => {
                     alignItems: 'center',
                 }}
             >
-
-                <ToggleButton
-                    key="EN"
-                    aria-label="EN"
-                    value="en"
-                    onClick={() => handleClick('en')}
-                >
-                    EN
-                </ToggleButton>
-                <ToggleButton
-                    key="ES"
-                    value="es"
-                    aria-label="ES"
-                    onClick={() => handleClick('es')}
-                >
-                    ES
-                </ToggleButton>
-                <ToggleButton
-                    key="HE"
-                    value="he"
-                    aria-label="HE"
-                    onClick={() => handleClick('he')}
-                >
-                    HE
-                </ToggleButton>
+                {languageFilters.map(filter => (
+                    <ToggleButton
+                        key={filter.value}
+                        value={filter.value}
+                        aria-label={filter.label}
+                        onClick={() => handleClick(filter.value)}
+                    >
+                        <Flag code={filter.flag} fallback={<span>Unknown</span>} height="16" />
+                    </ToggleButton>
+                ))}
             </StyledToggleButtonGroup>
         </>
     )
