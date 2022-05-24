@@ -91,6 +91,11 @@ const ToggleLenguage = () => {
             label: '中文',
             flag: 'cn'
         },
+        {
+            value: 'ar',
+            label: 'العربية',
+            flag: 'sa'
+        },
     ]
 
     const handleClick = (leng) => {
