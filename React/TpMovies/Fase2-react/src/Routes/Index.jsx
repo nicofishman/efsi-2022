@@ -6,13 +6,15 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { movieByType } from '../FetchFunctions'
 import { MovieContext } from '../MovieContext.jsx'
+import ToggleLenguage from '../Components/ToggleLenguage.jsx'
 
 
 function App() {
     const mostSearchedFilters = [{ name: 'En Streaming', type: 'popular', location: 'movie', url: 'movie' }, { name: 'En Televisión', type: 'popular', location: 'tv', url: 'tv' }, { name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'], url: 'movie' }, { name: 'En Cines', type: 'now_playing', location: 'movie', url: 'movie' }]
     const topRatedFilters = [{ name: 'Hoy' }, { name: 'Esta Semana' }]
 
-    const { mostSearchedMoviesTyes, setMostSearchedMoviesTyes } = useContext(MovieContext)
+    const { mostSearchedMoviesTyes, setMostSearchedMoviesTyes, lenguage } = useContext(MovieContext)
+    console.log(lenguage);
 
     const [mostSearchedMovies, setMostSearchedMovies] = useState([])
     const [topRatedMovies, setTopRatedMovies] = useState([])
@@ -21,16 +23,16 @@ function App() {
     useEffect(() => {
         const fetchMovies = async () => {
 
-            const mostSearched = await movieByType(mostSearchedMoviesTyes.type, mostSearchedMoviesTyes.location, mostSearchedMoviesTyes.filters)
+            const mostSearched = await movieByType(mostSearchedMoviesTyes.type, mostSearchedMoviesTyes.location, mostSearchedMoviesTyes.filters, lenguage)
 
-            const topRated = await movieByType('top_rated')
-            const upcoming = await movieByType('upcoming')
+            const topRated = await movieByType('top_rated', undefined, undefined, lenguage)
+            const upcoming = await movieByType('upcoming', undefined, undefined, lenguage)
             setMostSearchedMovies(mostSearched.results)
             setTopRatedMovies(topRated.results)
             setUpcomingMovies(upcoming.results)
         }
         fetchMovies()
-    }, [mostSearchedMoviesTyes])
+    }, [mostSearchedMoviesTyes, lenguage])
 
     return (
         <Box sx={{
@@ -40,6 +42,7 @@ function App() {
             backgroundImage: 'linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)',
             textAlign: 'center',
         }}>
+            <ToggleLenguage />
             <Typography sx={{
                 textAlign: 'center',
                 fontSize: '1.5rem',
