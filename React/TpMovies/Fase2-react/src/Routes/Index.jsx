@@ -4,16 +4,17 @@ import MovieSection from '../Components/MovieSection'
 import movies from '../../movies_test.json'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { movieByType } from '../FetchFunctions'
+import { movieByType, trendingMovies } from '../FetchFunctions'
 import { MovieContext } from '../MovieContext.jsx'
 import ToggleLenguage from '../Components/ToggleLenguage.jsx'
 
 
 function App() {
     const mostSearchedFilters = [{ name: 'En Streaming', type: 'popular', location: 'movie', url: 'movie' }, { name: 'En Televisión', type: 'popular', location: 'tv', url: 'tv' }, { name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'], url: 'movie' }, { name: 'En Cines', type: 'now_playing', location: 'movie', url: 'movie' }]
-    const topRatedFilters = [{ name: 'Hoy' }, { name: 'Esta Semana' }]
 
-    const { mostSearchedMoviesTyes, setMostSearchedMoviesTyes, lenguage } = useContext(MovieContext)
+    const topRatedFilters = [{ name: 'Hoy', timeWindow: 'day' }, { name: 'Esta Semana', timeWindow: 'week' }]
+
+    const { mostSearchedMoviesTyes, setMostSearchedMoviesTyes, lenguage, setTrendingMoviesFilters, trendingMoviesFilters } = useContext(MovieContext)
     console.log(lenguage);
 
     const [mostSearchedMovies, setMostSearchedMovies] = useState([])
@@ -25,14 +26,14 @@ function App() {
 
             const mostSearched = await movieByType(mostSearchedMoviesTyes.type, mostSearchedMoviesTyes.location, mostSearchedMoviesTyes.filters, lenguage)
 
-            const topRated = await movieByType('top_rated', undefined, undefined, lenguage)
-            const upcoming = await movieByType('upcoming', undefined, undefined, lenguage)
+            const topRated = await trendingMovies(trendingMoviesFilters.timeWindow, lenguage)
+            const upcoming = await movieByType('upcoming', 'movie', undefined, lenguage)
             setMostSearchedMovies(mostSearched.results)
             setTopRatedMovies(topRated.results)
             setUpcomingMovies(upcoming.results)
         }
         fetchMovies()
-    }, [mostSearchedMoviesTyes, lenguage])
+    }, [mostSearchedMoviesTyes, lenguage, trendingMoviesFilters])
 
     return (
         <Box sx={{
@@ -51,7 +52,7 @@ function App() {
             }}>Movie Search</Typography>
             <SearchMovieInput />
             <MovieSection title='Lo Más Buscado' movies={mostSearchedMovies} filters={mostSearchedFilters} set={(obj) => setMostSearchedMoviesTyes(obj)}></MovieSection>
-            <MovieSection title='Lo Mejorcito' movies={topRatedMovies} filters={topRatedFilters}></MovieSection>
+            <MovieSection title='Lo Mejorcito' movies={topRatedMovies} filters={topRatedFilters} set={(obj) => setTrendingMoviesFilters(obj)}></MovieSection>
             <MovieSection title='Lo que se viene' movies={upcomingMovies} filters={null}></MovieSection>
         </Box>
     )

@@ -6,6 +6,9 @@ export const MovieProvider = ({ children }) => {
 
     const [mostSearchedMoviesTyes, setMostSearchedMoviesTyes] = useState({ name: 'En Streaming', type: 'popular', location: 'movie', filters: [], url: 'movie' })
 
+    const [trendingMoviesFilters, setTrendingMoviesFilters] = useState({ name: 'Hoy', timeWindow: 'day' })
+
+
     const [lenguage, setLenguage] = useState('es')
 
 
@@ -17,7 +20,9 @@ export const MovieProvider = ({ children }) => {
                 setMostSearchedMoviesTyes,
                 url: mostSearchedMoviesTyes.url,
                 lenguage,
-                setLenguage
+                setLenguage,
+                setTrendingMoviesFilters,
+                trendingMoviesFilters
             }}
         >
             {children}
