@@ -15,7 +15,6 @@ function App() {
     const topRatedFilters = [{ name: 'Hoy', timeWindow: 'day' }, { name: 'Esta Semana', timeWindow: 'week' }]
 
     const { mostSearchedMoviesTyes, setMostSearchedMoviesTyes, lenguage, setTrendingMoviesFilters, trendingMoviesFilters } = useContext(MovieContext)
-    console.log(lenguage);
 
     const [mostSearchedMovies, setMostSearchedMovies] = useState([])
     const [topRatedMovies, setTopRatedMovies] = useState([])
