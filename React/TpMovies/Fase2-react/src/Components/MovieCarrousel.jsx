@@ -2,7 +2,8 @@ import React from 'react'
 import Movie from './Movie'
 import Box from '@mui/material/Box'
 
-const MovieCarrousel = ({ movies }) => {
+const MovieCarrousel = ({ movies, filters }) => {
+
     return (
         <Box sx={{
             display: 'flex',
@@ -21,7 +22,7 @@ const MovieCarrousel = ({ movies }) => {
         }}>
             {movies.map((movie) => {
                 return (
-                    <Movie key={movie.id} movie={movie} />
+                    <Movie key={movie.id} filters={filters} movie={movie} />
                 )
             })}
         </Box>

@@ -4,9 +4,9 @@ export const MovieContext = createContext()
 
 export const MovieProvider = ({ children }) => {
 
-    const [mostSearchedMoviesTyes, setMostSearchedMoviesTyes] = useState({ name: 'En Streaming', type: 'popular', location: 'movie', filters: [], url: 'movie' })
+    const [mostSearchedMoviesTyes, setMostSearchedMoviesTyes] = useState({ name: 'En Streaming', type: 'popular', location: 'movie', filters: [], url: 'movie', required: true })
 
-    const [trendingMoviesFilters, setTrendingMoviesFilters] = useState({ name: 'Hoy', timeWindow: 'day' })
+    const [trendingMoviesFilters, setTrendingMoviesFilters] = useState({ name: 'Hoy', timeWindow: 'day', url: 'movie', required: true })
 
 
     const [lenguage, setLenguage] = useState('es')

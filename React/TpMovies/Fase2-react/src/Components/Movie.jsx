@@ -5,9 +5,8 @@ import RatingWheel from './RatingWheel';
 import { Link } from 'react-router-dom';
 import { MovieContext } from '../MovieContext';
 
-const Movie = ({ movie }) => {
-
-    const {mostSearchedMoviesTyes} = useContext(MovieContext)
+const Movie = ({ movie, filters }) => {
+    console.log(filters)
 
     const { poster_path, vote_average, id } = movie
     const title = movie.title || movie.name
@@ -20,7 +19,7 @@ const Movie = ({ movie }) => {
             my: 2,
             width: 200,
         }}>
-            <Link to={`/${mostSearchedMoviesTyes.url}/${id}`} style={{
+            <Link to={`/${filters[0].url}/${id}`} style={{
                 textDecoration: 'none',
             }}>
                 <Box

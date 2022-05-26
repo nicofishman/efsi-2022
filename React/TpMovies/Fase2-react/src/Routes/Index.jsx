@@ -10,9 +10,10 @@ import ToggleLenguage from '../Components/ToggleLenguage.jsx'
 
 
 function App() {
-    const mostSearchedFilters = [{ name: 'En Streaming', type: 'popular', location: 'movie', url: 'movie' }, { name: 'En Televisión', type: 'popular', location: 'tv', url: 'tv' }, { name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'], url: 'movie' }, { name: 'En Cines', type: 'now_playing', location: 'movie', url: 'movie' }]
+    const mostSearchedFilters = [{ name: 'En Streaming', type: 'popular', location: 'movie', url: 'movie', required: true }, { name: 'En Televisión', type: 'popular', location: 'tv', url: 'tv', required: true }, { name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'], url: 'movie', required: true }, { name: 'En Cines', type: 'now_playing', location: 'movie', url: 'movie', required: true }]
 
-    const topRatedFilters = [{ name: 'Hoy', timeWindow: 'day' }, { name: 'Esta Semana', timeWindow: 'week' }]
+    const topRatedFilters = [{ name: 'Hoy', timeWindow: 'day', url: 'movie', required: true }, { name: 'Esta Semana', timeWindow: 'week', url: 'movie', required: true }]
+
 
     const { mostSearchedMoviesTyes, setMostSearchedMoviesTyes, lenguage, setTrendingMoviesFilters, trendingMoviesFilters } = useContext(MovieContext)
 
@@ -52,7 +53,7 @@ function App() {
             <SearchMovieInput />
             <MovieSection title='Lo Más Buscado' movies={mostSearchedMovies} filters={mostSearchedFilters} set={(obj) => setMostSearchedMoviesTyes(obj)}></MovieSection>
             <MovieSection title='Lo Mejorcito' movies={topRatedMovies} filters={topRatedFilters} set={(obj) => setTrendingMoviesFilters(obj)}></MovieSection>
-            <MovieSection title='Lo que se viene' movies={upcomingMovies} filters={null}></MovieSection>
+            <MovieSection title='Lo que se viene' movies={upcomingMovies} filters={[{url: 'movie', required: false}]}></MovieSection>
         </Box>
     )
 }

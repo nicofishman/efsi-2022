@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Filter from "./Filter";
 
 const MovieSection = ({ title, movies, filters, set }) => {
+    console.log(filters)
     return (
         <>
         <Box
@@ -25,10 +26,10 @@ const MovieSection = ({ title, movies, filters, set }) => {
             >
             {title}
             </Typography>
-            {filters && <Filter func={set} filters={filters} />}
+            {(filters[0].required) && <Filter func={set} filters={filters} />}
         </Box>
 
-        <MovieCarrousel movies={movies}></MovieCarrousel>
+        <MovieCarrousel filters={filters} movies={movies}></MovieCarrousel>
         </>
     );
 };
