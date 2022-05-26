@@ -1,8 +1,8 @@
-import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { movieById, movieByType } from '../FetchFunctions'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import RatingWheel from './../Components/RatingWheel';
 import MovieInfo from './../Components/MovieInfo';
 import { MovieContext } from '../MovieContext'
@@ -49,6 +49,19 @@ const Movie = () => {
                     borderRadius: 10,
                 }}
             />
+            <Box sx={{
+                position: 'absolute',
+                top: '1rem',
+                left: '0.5rem',
+            }}>
+                <Link to='/' style={{ textDecoration: 'none' }}>
+                    <ChevronLeftIcon color='inherit' sx={{
+                        fontSize: '3rem',
+                        color: 'white',
+                    }} />
+                </Link>
+            </Box>
+
             <MovieInfo movie={movie} />
         </>
     )
