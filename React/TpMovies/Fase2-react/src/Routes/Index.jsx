@@ -12,7 +12,7 @@ import ToggleLenguage from '../Components/ToggleLenguage.jsx'
 function App() {
     const mostSearchedFilters = [{ name: 'En Streaming', type: 'popular', location: 'movie', url: 'movie', required: true }, { name: 'En Televisión', type: 'popular', location: 'tv', url: 'tv', required: true }, { name: 'En Alquiler', type: 'movie', location: 'discover', filters: ['&with_watch_monetization_types=rent'], url: 'movie', required: true }, { name: 'En Cines', type: 'now_playing', location: 'movie', url: 'movie', required: true }]
 
-    const topRatedFilters = [{ name: 'Hoy', timeWindow: 'day', url: 'movie', required: true }, { name: 'Esta Semana', timeWindow: 'week', url: 'movie', required: true }]
+    const topRatedFilters = [{ name: 'Hoy', timeWindow: 'day', url: 'movie', required: true}, { name: 'Esta Semana', timeWindow: 'week', url: 'movie', required: true }]
 
 
     const { mostSearchedMoviesTyes, setMostSearchedMoviesTyes, lenguage, setTrendingMoviesFilters, trendingMoviesFilters } = useContext(MovieContext)

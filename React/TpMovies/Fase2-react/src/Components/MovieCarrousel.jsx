@@ -21,6 +21,7 @@ const MovieCarrousel = ({ movies, filters }) => {
             }
         }}>
             {movies.map((movie) => {
+                console.log(movie);
                 return (
                     <Movie key={movie.id} filters={filters} movie={movie} />
                 )

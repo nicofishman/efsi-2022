@@ -1,12 +1,41 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import RatingWheel from './RatingWheel';
 import { Link } from 'react-router-dom';
 import { MovieContext } from '../MovieContext';
 
+
+
 const Movie = ({ movie, filters }) => {
-    console.log(filters)
+
+    const [urlLocation, setUrlLocation] = useState()
+
+    const {mostSearchedMoviesTyes, trendingMoviesFilters} = useContext(MovieContext)
+
+    useEffect(() => {
+
+        switch (filters.length) {
+            case 1:
+                setUrlLocation(filters[0].url)
+                break;
+            
+            case 2:
+                setUrlLocation(trendingMoviesFilters.url)
+                break;
+
+            case 4:
+                setUrlLocation(mostSearchedMoviesTyes.url)
+                
+                break;
+        
+            default:
+                break;
+        }
+
+
+    }, [filters, mostSearchedMoviesTyes, trendingMoviesFilters])
+    
 
     const { poster_path, vote_average, id } = movie
     const title = movie.title || movie.name
@@ -19,7 +48,7 @@ const Movie = ({ movie, filters }) => {
             my: 2,
             width: 200,
         }}>
-            <Link to={`/${filters[0].url}/${id}`} style={{
+            <Link to={`/${urlLocation}/${id}`} style={{
                 textDecoration: 'none',
             }}>
                 <Box
