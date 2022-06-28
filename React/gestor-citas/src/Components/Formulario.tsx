@@ -40,7 +40,7 @@ const Formulario: FC<FormularioProps> = ({ cita, setCita, citas, addCita }) => {
             <Titulo title='Crear mi cita'/>
             <Input label='Nombre mascota *' placeholder='Nombre Mascota' type="text" value={cita.nombre} onChange={(e) => setCita({ ...cita, nombre: e.currentTarget.value })}/>
             <Input label='Nombre dueño  *' placeholder='Nombre del dueño de la mascota' type="text" value={cita.dueno} onChange={(e) => setCita({ ...cita, dueno: e.currentTarget.value })}/>
-            <Input label='Fecha *' type="date" value={cita.fecha} onChange={(e) => setCita({ ...cita, fecha: e.currentTarget.value })}/>
+            <Input label='Fecha *' min={new Date().toLocaleDateString('en-ca')} type="date" value={cita.fecha} onChange={(e) => setCita({ ...cita, fecha: e.currentTarget.value })}/>
             <Input label='Hora *' type="time" value={cita.hora} onChange={(e) => setCita({ ...cita, hora: e.currentTarget.value })}/>
             <Input label='Sintomas *' type="textarea" value={cita.sintomas} onChangeTextArea={(e) => setCita({ ...cita, sintomas: e.currentTarget.value })}/>
             <CrearCita name='Agregar cita' onClick={() => createCita()}/>
