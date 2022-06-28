@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 import Citas from './Components/Citas';
 import Formulario from './Components/Formulario';
@@ -7,16 +7,34 @@ interface AppProps {
 
 };
 
+export interface Cita {
+    nombre: string;
+    dueno: string;
+    fecha: string;
+    hora: string;
+    sintomas: string;
+}
+
 const App: FC<AppProps> = () => {
+    const [cita, setCita] = useState<Cita>({
+        nombre: '',
+        dueno: '',
+        fecha: '',
+        hora: '',
+        sintomas: ''
+    });
+
+    const [citas, setCitas] = useState<Cita[]>([]);
+
     return (
-        <div className="flex flex-col items-center pt-10 pb-20 w-full h-full text-white uppercase sm:px-20 bg-bgPrimary">
-            <h1 className='text-5xl'>ADMINISTRADOR DE PACIENTES</h1>
-            <div className='flex flex-row mt-20 w-full'>
-                <div className="flex-1">
-                    <Formulario />
+        <div className="flex flex-col items-center px-10 pt-10 pb-20 w-full h-screen text-white bg-auto md:px-20 bg-bgPrimary">
+            <h1 className='text-5xl uppercase'>ADMINISTRADOR DE PACIENTES</h1>
+            <div className='flex flex-col gap-32 mt-20 w-full md:flex-row'>
+                <div className="flex flex-1 justify-center">
+                    <Formulario addCita={setCitas} cita={cita} citas={citas} setCita={setCita} />
                 </div>
-                <div className="flex-1">
-                    <Citas />
+                <div className="flex flex-1 justify-center">
+                    <Citas citas={citas}/>
                 </div>
             </div>
         </div>
